@@ -1,0 +1,36 @@
+name: Something looks wrong
+description: The face shows something odd, or it will not install.
+body:
+  - type: input
+    id: watch
+    attributes:
+      label: Watch
+      placeholder: Galaxy Watch7, Pixel Watch 3, …
+    validations:
+      required: true
+  - type: input
+    id: wear-os
+    attributes:
+      label: Wear OS version
+      description: Settings › About watch › Software information (Galaxy) or Settings › System › About › Versions (Pixel).
+    validations:
+      required: true
+  - type: input
+    id: file
+    attributes:
+      label: APK file you installed
+      placeholder: compile-time-1.0.0-wear-os-6.apk
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you saw, what you expected, and the time and heart rate if it is about what Clawd is doing.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshot or install output
+      description: Remove IP addresses and pairing codes before pasting.

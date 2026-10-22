@@ -1,0 +1,44 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build and validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@v6
+
+      - name: Cache Google's validation tools
+        uses: actions/cache@v6
+        with:
+          path: build/wff-tools
+          key: wff-tools-${{ hashFiles('scripts/validate.sh') }}
+
+      - name: Build APKs
+        run: ./gradlew assembleRelease
+
+      - name: Validate against the Watch Face Format schema and Play memory limits
+        run: bash scripts/validate.sh
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: apks
+          path: watchface/build/outputs/apk/*/release/*.apk

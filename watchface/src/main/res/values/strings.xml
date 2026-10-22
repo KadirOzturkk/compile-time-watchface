@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="watch_face_name">Compile Time</string>
+    <string name="accent_label">Accent</string>
+    <string name="accent_clay">Clay</string>
+    <string name="accent_sky">Sky</string>
+    <string name="accent_mint">Mint</string>
+    <string name="accent_oat">Oat</string>
+</resources>

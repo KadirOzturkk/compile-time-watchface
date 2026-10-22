@@ -1,0 +1,15 @@
+build/
+.gradle/
+.kotlin/
+.idea/
+*.iml
+local.properties
+.DS_Store
+keystore.properties
+*.jks
+*.keystore
+CLAUDE.local.md
+
+# Some global gitignores exclude these.
+!CLAUDE.md
+!docs/
